@@ -15,7 +15,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async nuxtServertInit ({ commit, dispatch }) {
+  async nuxtServerInit ({ commit, dispatch }) {
     const response = await this.$axios.$get('members')
 
     commit('SET_MEMBERS', response.data)
