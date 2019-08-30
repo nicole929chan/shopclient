@@ -9,7 +9,9 @@
         </div>
         <div class="media-content">
           <p class="title is-4">
-            {{ member.name }}
+            <nuxt-link :to="{ name: 'members-id', params: { id: member.id } }">
+              {{ member.name }}
+            </nuxt-link>
           </p>
           <p class="subtitle is-6">
             @johnsmith

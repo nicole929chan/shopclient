@@ -20,7 +20,11 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item">Home</a>
+        <a class="navbar-item">
+          <nuxt-link :to="{ name: 'index' }">
+            Home
+          </nuxt-link>
+        </a>
 
         <a class="navbar-item">Documentation</a>
 
