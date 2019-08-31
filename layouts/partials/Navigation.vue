@@ -22,7 +22,11 @@
         <div class="navbar-item">
           <div class="buttons">
             <a class="button is-primary">
-              <strong>Sign up</strong>
+              <strong>
+                <nuxt-link :to="{ name: 'auth-signup' }">
+                  Sign up
+                </nuxt-link>
+              </strong>
             </a>
             <nuxt-link :to="{ name: 'auth-signin' }" class="button is-light">
               Log in
