@@ -2,7 +2,7 @@
   <div class="section">
     <div class="container is-fluid">
       <div>
-        <img :src="member.activity.image_path" alt="">
+        <img :src="image" alt="">
         <section>
           {{ member.activity.description }}
         </section>
@@ -25,6 +25,11 @@ import Add from '@/components/plan/Add'
 export default {
   components: {
     Add
+  },
+  computed: {
+    image () {
+      return `http://shop.test/storage/${this.member.activity.image_path}`
+    }
   },
   async asyncData ({ params, app }) {
     const response = await app.$axios.$get(`members/${params.id}`)

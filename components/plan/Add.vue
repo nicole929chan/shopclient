@@ -1,33 +1,31 @@
 <template>
   <section>
-    <template v-if="plan">
-      <h3 class="title is-4">
-        {{ msg }}
-      </h3>
-    </template>
-    <template v-else>
-      <button class="button is-primary is-rounded" @click.prevent="join = true">
-        Join now!
-      </button>
-      <form v-if="join" action="#" @submit.prevent="upload">
-        <div class="file has-name">
+    <h3 v-show="msg" class="title is-5">
+      {{ msg }}
+    </h3>
+    <form v-show="!msg" action="#" @submit.prevent="upload">
+      <div class="field">
+        <div class="file has-name is-boxed">
           <label class="file-label">
             <input type="file" class="file-input" @change="onChange">
             <span class="file-cta">
               <span class="file-icon">
-                <i class="fas fa-upload" />
+                <i class="fas fa-cloud-upload-alt" />
               </span>
               <span class="file-label">
-                Choose a photo
+                UPLOAD TO GET GIFT!
               </span>
             </span>
-            <button class="file-name button is-link">
-              Upload
+            <span class="file-name">
+              {{ member.activity.description }}
+            </span>
+            <button class="button is-danger is-rounded">
+              SUBMIT
             </button>
           </label>
         </div>
-      </form>
-    </template>
+      </div>
+    </form>
   </section>
 </template>
 
@@ -41,25 +39,15 @@ export default {
   },
   data () {
     return {
-      plan: null,
-      join: false,
       form: {
         memberId: this.member.id,
         image: {}
       },
       src: null,
-      msg: 'Already join!'
+      msg: null
     }
   },
-  created () {
-    this.getPlan()
-  },
   methods: {
-    async getPlan () {
-      const response = await this.$axios.$get(`user/${this.$auth.user.id}/plans?member_id=${this.member.id}`)
-
-      this.plan = response.data
-    },
     onChange (e) {
       if (!e.target.files.length) {
         return
@@ -83,8 +71,6 @@ export default {
       const response = await this.$axios.$post('plan', data)
 
       this.msg = response.msg
-      this.plan = response.plan
-      this.join = false
     }
   }
 }
