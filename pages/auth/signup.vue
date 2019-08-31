@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   data () {
     return {
@@ -67,12 +69,17 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      flash: 'alert/flash'
+    }),
     async signup () {
       try {
         await this.$axios.$post('auth/register', this.form)
 
+        this.flash('Sign up successfully! Please login your account.')
+
         this.$router.replace({
-          'name': 'index'
+          'name': 'auth-signin'
         })
       } catch (e) {
         this.errors = e.response.data.errors
