@@ -8,7 +8,7 @@
           </h1>
           <form action="#" @submit.prevent="signup">
             <div class="field">
-              <label class="lable">Name</label>
+              <label class="label">Name</label>
               <div class="control">
                 <input v-model="form.name" type="text" class="input">
                 <div v-if="errors.name" class="field">
@@ -19,7 +19,7 @@
               </div>
             </div>
             <div class="field">
-              <label class="lable">Email</label>
+              <label class="label">Email</label>
               <div class="control">
                 <input v-model="form.email" type="email" class="input">
                 <div v-if="errors.email" class="field">
@@ -42,7 +42,7 @@
             </div>
             <div class="field">
               <p class="control">
-                <button class="button is-info is-medium">
+                <button class="button is-primary">
                   Sign up
                 </button>
               </p>

@@ -21,16 +21,21 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary">
-              <strong>
+            <template v-if="$auth.loggedIn">
+              <button @click.prevent="logout" class="button is-primary">
+                logout
+              </button>
+            </template>
+            <template v-else>
+              <div class="button is-primary">
                 <nuxt-link :to="{ name: 'auth-signup' }">
                   Sign up
                 </nuxt-link>
-              </strong>
-            </a>
-            <nuxt-link :to="{ name: 'auth-signin' }" class="button is-light">
-              Log in
-            </nuxt-link>
+              </div>
+              <nuxt-link :to="{ name: 'auth-signin' }" class="button is-light">
+                Sign in
+              </nuxt-link>
+            </template>
           </div>
         </div>
       </div>
@@ -39,5 +44,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    logout () {
+      this.$auth.logout()
+    }
+  }
+}
 </script>

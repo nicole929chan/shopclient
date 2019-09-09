@@ -8,9 +8,14 @@
           </h1>
           <form action="#" @submit.prevent="signin">
             <div class="field">
-              <label class="lable">Email</label>
+              <label class="label">Email</label>
               <div class="control">
                 <input v-model="form.email" type="email" class="input">
+                <div v-if="errors.email" class="field">
+                  <span class="has-text-danger">
+                    {{ errors.email }}
+                  </span>
+                </div>
               </div>
             </div>
             <div class="field">
@@ -21,7 +26,7 @@
             </div>
             <div class="field">
               <p class="control">
-                <button class="button is-info is-medium">
+                <button class="button is-primary mx-0">
                   Sign in
                 </button>
               </p>
@@ -40,18 +45,24 @@ export default {
       form: {
         email: '',
         password: ''
-      }
+      },
+      errors: {}
     }
   },
   methods: {
     async signin () {
-      await this.$auth.loginWith('local', {
-        data: this.form
-      })
+      try {
+        await this.$auth.loginWith('local', {
+          data: this.form
+        })
 
-      this.$router.replace({
-        'name': 'index'
-      })
+        this.$router.replace({
+          'name': 'index'
+        })
+      } catch (e) {
+        console.log(e.response)
+        this.errors = e.response.data.errors
+      }
     }
   }
 }
