@@ -22,7 +22,7 @@
         <div class="navbar-item">
           <div class="buttons">
             <template v-if="$auth.loggedIn">
-              <button @click.prevent="logout" class="button is-primary">
+              <button class="button is-primary" @click.prevent="logout">
                 logout
               </button>
             </template>

@@ -9,7 +9,7 @@
       </article>
       <template v-if="valid">
         <template v-if="$auth.loggedIn">
-          <Add :member="member" />
+          <Add v-if="!added" :member="member" />
         </template>
         <template v-else>
           <nuxt-link :to="{ name: 'auth-signin' }" class="button is-primary is-flex">
@@ -29,11 +29,16 @@ export default {
     Add
   },
   async asyncData ({ params, app }) {
-    const response = await app.$axios.$get(`members/${params.id}`)
-    console.log(response)
+    const response = await app.$axios.$get(`members/${params.id}`, {
+      params: {
+        userId: app.$auth.loggedIn ? app.$auth.user.id : null
+      }
+    })
+
     return {
       member: response.data,
-      valid: response.meta.valid
+      valid: response.meta.valid,
+      added: response.meta.added
     }
   }
 }
