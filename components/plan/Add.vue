@@ -22,6 +22,11 @@
             <button class="button is-danger is-rounded">
               SUBMIT
             </button>
+            <div v-if="errors.image" class="field">
+              <span class="has-text-danger">
+                {{ errors.image[0] }}
+              </span>
+            </div>
           </label>
         </div>
       </div>
@@ -44,7 +49,8 @@ export default {
         image: {}
       },
       src: null,
-      msg: null
+      msg: null,
+      errors: {}
     }
   },
   methods: {
@@ -68,9 +74,14 @@ export default {
       data.append('image', this.form.image)
       data.append('member_id', this.form.memberId)
 
-      const response = await this.$axios.$post('plan', data)
-
-      this.msg = response.msg
+      try {
+        const response = await this.$axios.$post('plan', data)
+        this.msg = response.msg
+        this.errors = {}
+      } catch (e) {
+        this.errors = e.response.data.errors
+        this.msg = ''
+      }
     }
   }
 }
