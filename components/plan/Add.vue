@@ -1,8 +1,5 @@
 <template>
   <section>
-    <h3 v-show="msg" class="title is-5">
-      {{ msg }}
-    </h3>
     <form v-show="!msg" action="#" @submit.prevent="upload">
       <div class="field">
         <div class="file has-name is-boxed">
@@ -35,6 +32,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   props: {
     member: {
@@ -54,6 +53,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      flash: 'alert/flash'
+    }),
     onChange (e) {
       if (!e.target.files.length) {
         return
@@ -76,8 +78,10 @@ export default {
 
       try {
         const response = await this.$axios.$post('plan', data)
-        this.msg = response.msg
+
         this.errors = {}
+        this.msg = response.msg
+        this.flash(response.msg)
       } catch (e) {
         this.errors = e.response.data.errors
         this.msg = ''

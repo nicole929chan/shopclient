@@ -4,7 +4,7 @@
       <div class="media">
         <div class="media-left">
           <figure class="image is-48x48">
-            <img :src="member.logo" :alt="member.name">
+            <img :src="member.logo">
           </figure>
         </div>
         <div class="media-content">
