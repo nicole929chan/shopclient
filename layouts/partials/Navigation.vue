@@ -25,7 +25,7 @@
               <nuxt-link :to="{ name: 'plans' }">
                 Me
               </nuxt-link>
-              <button class="button is-primary" @click.prevent="logout">
+              <button @click.prevent="logout">
                 logout
               </button>
             </template>

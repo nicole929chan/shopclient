@@ -13,15 +13,15 @@
               {{ member.name }}
             </nuxt-link>
           </p>
-          <p class="subtitle is-6">
-            {{ member.email }}
-          </p>
         </div>
       </div>
-
       <div class="content">
-        {{ member.address }}
-        <div>{{ member.phone_number }}</div>.
+        <div>
+          {{ member.address }}
+        </div>
+        <div>
+          {{ member.phone_number }}
+        </div>
         <br>
       </div>
     </div>

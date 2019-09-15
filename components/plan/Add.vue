@@ -1,34 +1,38 @@
 <template>
-  <section>
-    <form v-show="!msg" action="#" @submit.prevent="upload">
-      <div class="field">
-        <div class="file has-name is-boxed">
-          <label class="file-label">
-            <input type="file" class="file-input" @change="onChange">
-            <span class="file-cta">
-              <span class="file-icon">
-                <i class="fas fa-cloud-upload-alt" />
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <form v-show="!msg" action="#" @submit.prevent="upload">
+        <div class="field">
+          <div class="file is-medium has-name is-boxed">
+            <label class="file-label">
+              <input type="file" class="file-input" @change="onChange">
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload" />
+                </span>
+                <span class="file-label has-text-danger">
+                  UPLOAD TO GET GIFT!
+                </span>
               </span>
-              <span class="file-label">
-                UPLOAD TO GET GIFT!
+              <span class="file-name is-size-3 has-text-danger">
+                <div class="has-text-center">
+                  +
+                </div>
               </span>
+              <button class="button is-danger">
+                SUBMIT
+              </button>
+            </label>
+          </div>
+          <div v-if="errors.image" class="field">
+            <span class="has-text-danger">
+              {{ errors.image[0] }}
             </span>
-            <span class="file-name">
-              {{ member.activity.description }}
-            </span>
-            <button class="button is-danger is-rounded">
-              SUBMIT
-            </button>
-            <div v-if="errors.image" class="field">
-              <span class="has-text-danger">
-                {{ errors.image[0] }}
-              </span>
-            </div>
-          </label>
+          </div>
         </div>
-      </div>
-    </form>
-  </section>
+      </form>
+    </div>
+  </div>
 </template>
 
 <script>

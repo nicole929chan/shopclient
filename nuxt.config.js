@@ -23,6 +23,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '~assets/styles/app.scss'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -75,8 +76,8 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: 'http://localhost:8888/shop/public/api'
-    // baseURL: 'http://shop.test/api'
+    // baseURL: 'http://localhost:8888/shop/public/api'
+    baseURL: 'http://shop.test/api'
   },
   /*
   ** Build configuration
