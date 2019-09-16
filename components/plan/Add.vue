@@ -1,37 +1,33 @@
 <template>
-  <div class="columns is-centered">
-    <div class="column is-half">
-      <form v-show="!msg" action="#" @submit.prevent="upload">
-        <div class="field">
-          <div class="file is-medium has-name is-boxed">
-            <label class="file-label">
-              <input type="file" class="file-input" @change="onChange">
-              <span class="file-cta">
-                <span class="file-icon">
-                  <i class="fas fa-upload" />
-                </span>
-                <span class="file-label has-text-danger">
-                  UPLOAD TO GET GIFT!
-                </span>
+  <div class="">
+    <form v-show="!msg" action="#" @submit.prevent="upload">
+      <div class="field">
+        <div class="file is-medium has-name is-boxed">
+          <label class="file-label">
+            <input type="file" class="file-input" @change="onChange">
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload" />
               </span>
-              <span class="file-name is-size-3 has-text-danger">
-                <div class="has-text-center">
-                  +
-                </div>
+              <span class="file-label has-text-danger">
+                UPLOAD TO GET GIFT!
               </span>
-              <button class="button is-danger">
-                SUBMIT
-              </button>
-            </label>
-          </div>
-          <div v-if="errors.image" class="field">
-            <span class="has-text-danger">
-              {{ errors.image[0] }}
             </span>
-          </div>
+            <span class="file-name is-size-4 has-text-danger has-text-centered">
+              +
+            </span>
+            <button class="button is-danger">
+              SUBMIT
+            </button>
+          </label>
         </div>
-      </form>
-    </div>
+        <div v-if="errors.image" class="field">
+          <span class="has-text-danger">
+            {{ errors.image[0] }}
+          </span>
+        </div>
+      </div>
+    </form>
   </div>
 </template>
 

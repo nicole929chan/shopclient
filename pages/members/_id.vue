@@ -1,26 +1,36 @@
 <template>
-  <div class="section">
-    <div class="container is-fluid">
+  <div>
+    <div class="container is-fluid is-marginless">
       <figure class="image">
         <img :src="member.activity.image_path" alt="">
       </figure>
-      <p class="my-2">
-        {{ member.activity.description }}
-      </p>
-      <p>
-        {{ start_date }} ~ {{ member.activity.activity_end }}
-      </p>
-      <template v-if="valid">
-        <template v-if="$auth.loggedIn">
-          <Add v-if="!added" :member="member" />
-        </template>
-        <template v-else>
-          <nuxt-link :to="{ name: 'auth-signin' }" class="button is-primary is-flex">
-            Sign in
-          </nuxt-link>
-        </template>
-      </template>
     </div>
+    <section class="section">
+      <div class="columns is-multiline is-mobile">
+        <div class="column is-12">
+          <p class="is-size-6 has-text-weight-medium">
+            [ {{ start_date }} ~ {{ finish_date }} ]
+          </p>
+        </div>
+        <div class="column is-12">
+          <p class="is-size-5">
+            {{ member.activity.description }}
+          </p>
+        </div>
+        <template v-if="valid">
+          <div class="column is-12">
+            <template v-if="$auth.loggedIn">
+              <Add v-if="!added" :member="member" />
+            </template>
+            <template v-else>
+              <nuxt-link :to="{ name: 'auth-signin' }" class="button is-danger is-flex">
+                Sign in
+              </nuxt-link>
+            </template>
+          </div>
+        </template>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -34,7 +44,10 @@ export default {
   },
   computed: {
     start_date () {
-      return moment(this.member.activity.activity_start).format('Y-m-d')
+      return moment(this.member.activity.activity_start).format('YYYY-MM-DD hh:mm')
+    },
+    finish_date () {
+      return moment(this.member.activity.activity_end).format('YYYY-MM-DD hh:mm')
     }
   },
   async asyncData ({ params, app }) {

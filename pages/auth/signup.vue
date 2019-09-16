@@ -30,6 +30,45 @@
               </div>
             </div>
             <div class="field">
+              <label class="label">Birthdate</label>
+              <div class="columns is-mobile">
+                <div class="column">
+                  <div class="select is-fullwidth">
+                    <select v-model="form.birth_year">
+                      <option value="">
+                        YEAR
+                      </option>
+                      <option v-for="year in years" :key="year" :value="year">
+                        {{ year }}
+                      </option>
+                    </select>
+                    <div v-if="errors.birth_year" class="field">
+                      <span class="has-text-danger">
+                        {{ errors.birth_year[0] }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="select is-fullwidth">
+                    <select v-model="form.birth_month">
+                      <option value="">
+                        MONTH
+                      </option>
+                      <option v-for="month in 12" :key="month" :value="month">
+                        {{ month }}
+                      </option>
+                    </select>
+                    <div v-if="errors.birth_month" class="field">
+                      <span class="has-text-danger">
+                        {{ errors.birth_month[0] }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="field">
               <label class="label">Password</label>
               <div class="control">
                 <input v-model="form.password" type="password" class="input">
@@ -42,7 +81,7 @@
             </div>
             <div class="field">
               <p class="control">
-                <button class="button is-primary">
+                <button class="button is-danger is-fullwidth">
                   Sign up
                 </button>
               </p>
@@ -63,9 +102,17 @@ export default {
       form: {
         name: '',
         email: '',
-        password: ''
+        password: '',
+        birth_year: '',
+        birth_month: ''
       },
       errors: {}
+    }
+  },
+  computed: {
+    years () {
+      const year = new Date().getFullYear()
+      return Array.from({ length: year - 1930 }, (value, index) => 1931 + index)
     }
   },
   methods: {

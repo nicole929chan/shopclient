@@ -13,7 +13,7 @@
                 <input v-model="form.email" type="email" class="input">
                 <div v-if="errors.email" class="field">
                   <span class="has-text-danger">
-                    {{ errors.email }}
+                    {{ errors.email[0] }}
                   </span>
                 </div>
               </div>
@@ -25,11 +25,11 @@
               </div>
             </div>
             <div class="field">
-              <p class="control">
-                <button class="button is-primary mx-0">
+              <div class="control">
+                <button class="button is-danger is-fullwidth">
                   Sign in
                 </button>
-              </p>
+              </div>
             </div>
           </form>
         </div>
