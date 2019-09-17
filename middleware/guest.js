@@ -1,5 +1,5 @@
-export default function ({ app, redirect }) {
-  if (app.$auth.loggedIn) {
+export default function ({ store, redirect }) {
+  if (store.getters['auth/authenticated']) {
     return redirect('/plans')
   }
 }
