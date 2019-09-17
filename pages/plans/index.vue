@@ -16,6 +16,7 @@ export default {
       plans: null
     }
   },
+  middleware: ['auth'],
   async asyncData ({ params, app }) {
     const response = await app.$axios.$get(`user/${app.$auth.user.id}/plans`)
 

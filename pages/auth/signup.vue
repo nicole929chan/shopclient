@@ -115,6 +115,7 @@ export default {
       return Array.from({ length: year - 1930 }, (value, index) => 1931 + index)
     }
   },
+  middleware: ['guest'],
   methods: {
     ...mapActions({
       flash: 'alert/flash'

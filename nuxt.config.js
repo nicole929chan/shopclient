@@ -69,6 +69,10 @@ export default {
           }
         }
       }
+    },
+    redirect: {
+      login: '/auth/signin',
+      home: '/'
     }
   },
   /*

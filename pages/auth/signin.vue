@@ -49,6 +49,7 @@ export default {
       errors: {}
     }
   },
+  middleware: ['guest'],
   methods: {
     async signin () {
       try {
