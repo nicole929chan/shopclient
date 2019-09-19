@@ -1,5 +1,7 @@
+const env = require('dotenv').config()
 
 export default {
+  env: env.parsed,
   mode: 'universal',
   /*
   ** Headers of the page
@@ -81,7 +83,7 @@ export default {
   */
   axios: {
     // baseURL: 'http://localhost:8888/shop/public/api'
-    baseURL: 'http://shop.test/api'
+    baseURL: env.parsed.API_URL
   },
   /*
   ** Build configuration
