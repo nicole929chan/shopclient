@@ -4,7 +4,7 @@
       <div class="columns is-centered">
         <div class="column is-6">
           <h1 class="title is-4">
-            Sign in
+            Reset Password
           </h1>
           <form action="#" @submit.prevent="signin">
             <div class="field">
@@ -19,21 +19,10 @@
               </div>
             </div>
             <div class="field">
-              <label class="label">Password</label>
-              <div class="control">
-                <input v-model="form.password" type="password" class="input">
-              </div>
-            </div>
-            <div class="field">
               <div class="control">
                 <button class="button is-danger is-fullwidth">
-                  Sign in
+                  Send Password Reset Link
                 </button>
-                <nuxt-link :to="{ name: 'auth-password-reset' }">
-                  <p class="has-text-centered">
-                    Forget your password?
-                  </p>
-                </nuxt-link>
               </div>
             </div>
           </form>
@@ -48,8 +37,7 @@ export default {
   data () {
     return {
       form: {
-        email: '',
-        password: ''
+        email: ''
       },
       errors: {}
     }
@@ -58,15 +46,8 @@ export default {
   methods: {
     async signin () {
       try {
-        await this.$auth.loginWith('local', {
-          data: this.form
-        })
-
-        this.$router.replace({
-          'name': 'index'
-        })
+        await this.$axios.$post('auth/password/email', this.form)
       } catch (e) {
-        console.log(e.response)
         this.errors = e.response.data.errors
       }
     }
