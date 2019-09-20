@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   data () {
     return {
@@ -44,9 +46,19 @@ export default {
   },
   middleware: ['guest'],
   methods: {
+    ...mapActions({
+      flash: 'alert/flash'
+    }),
     async signin () {
+      this.errors = {}
+
       try {
-        await this.$axios.$post('auth/password/email', this.form)
+        const response = await this.$axios.$post('auth/password/email', this.form)
+
+        this.flash(response.msg)
+        this.$router.replace({
+          'name': 'index'
+        })
       } catch (e) {
         this.errors = e.response.data.errors
       }
