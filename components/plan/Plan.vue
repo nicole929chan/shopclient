@@ -20,7 +20,13 @@
                     {{ start_date }} ~ {{ finish_date }}
                   </small>
                   <br>
-                  Get Gift! {{ plan.member.activity.points }} points
+                  Get Gift! {{ plan.member.activity.points }} {{ activity_point }}
+                  <br>
+                  You have
+                  <span class="has-text-danger">
+                    {{ plan.points }}
+                  </span>
+                  {{ point }}
                   <br>
                 </p>
               </div>
@@ -31,7 +37,7 @@
                   </button>
                 </div>
                 <div class="column">
-                  <button class="button is-danger is-small is-fullwidth" @click.prevent="showRedeem = true">
+                  <button class="button is-danger is-small is-fullwidth" :disabled="plan.points==0" @click.prevent="showRedeem = true">
                     Redeem!
                   </button>
                 </div>
@@ -47,6 +53,7 @@
 </template>
 
 <script>
+import pluralize from 'pluralize'
 import moment from 'moment'
 import Card from '@/components/plan/Card'
 import Redeem from '@/components/plan/Redeem'
@@ -74,6 +81,12 @@ export default {
     },
     finish_date () {
       return moment(this.plan.member.activity.activity_end).format('YYYY-MM-DD hh:mm')
+    },
+    activity_point () {
+      return pluralize('point', this.plan.member.activity.points)
+    },
+    point () {
+      return pluralize('point', this.plan.points)
     }
   }
 }

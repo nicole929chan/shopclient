@@ -19,7 +19,8 @@
     "dotenv": "^8.1.0",
     "font-awesome": "^4.7.0",
     "moment": "^2.24.0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "pluralize": "^8.0.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
