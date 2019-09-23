@@ -67,11 +67,14 @@ export default {
       flash: 'alert/flash'
     }),
     async signin () {
+      this.errors = {}
+
       try {
         await this.$auth.loginWith('local', {
           data: this.form
         })
 
+        this.$bus.$emit('toggle-menu')
         this.flash('You have signed in.')
         this.$router.replace({
           'name': 'index'

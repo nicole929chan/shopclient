@@ -58,6 +58,7 @@ export default {
     },
     logout () {
       this.$auth.logout()
+      this.toggle()
     }
   }
 }
