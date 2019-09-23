@@ -51,11 +51,7 @@ export default {
     }
   },
   async asyncData ({ params, app }) {
-    const response = await app.$axios.$get(`members/${params.id}`, {
-      params: {
-        userId: app.$auth.loggedIn ? app.$auth.user.id : null
-      }
-    })
+    const response = await app.$axios.$get(`members/${params.id}`)
 
     return {
       member: response.data,
