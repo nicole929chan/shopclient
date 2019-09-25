@@ -23,18 +23,18 @@
         <div class="navbar-item">
           <div class="buttons">
             <template v-if="$auth.loggedIn">
-              <nuxt-link :to="{ name: 'plans' }" class="button is-danger is-small">
+              <nuxt-link :to="{ name: 'plans' }" class="button is-danger">
                 Me
               </nuxt-link>
-              <button class="button is-danger is-small" @click.prevent="logout">
+              <button class="button is-danger" @click.prevent="logout">
                 logout
               </button>
             </template>
             <template v-else>
-              <nuxt-link :to="{ name: 'auth-signup' }" class="button is-danger is-small">
+              <nuxt-link :to="{ name: 'auth-signup' }" class="button is-danger">
                 Sign up
               </nuxt-link>
-              <nuxt-link :to="{ name: 'auth-signin' }" class="button is-danger is-small">
+              <nuxt-link :to="{ name: 'auth-signin' }" class="button is-danger">
                 Sign in
               </nuxt-link>
             </template>

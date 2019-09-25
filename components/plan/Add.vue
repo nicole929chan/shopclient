@@ -2,21 +2,18 @@
   <div class="">
     <form v-show="!msg" action="#" @submit.prevent="upload">
       <div class="field">
-        <div class="file is-medium has-name is-boxed">
-          <label class="file-label">
+        <div class="file is-centered is-medium has-name is-boxed">
+          <label class="file-label file-outer">
             <input type="file" class="file-input" @change="onChange">
             <span class="file-cta">
-              <span class="file-icon">
-                <i class="fas fa-upload" />
-              </span>
               <span class="file-label has-text-danger">
                 UPLOAD TO GET GIFT!
               </span>
             </span>
-            <span class="file-name is-size-4 has-text-danger has-text-centered">
-              +
+            <span class="file-name is-size-4 has-text-danger has-text-centered" style="margin: 1rem 0; padding: 3rem 0 6rem 0; border-top: 1px solid #ff470f; border-top-left-radius: 4px; border-top-right-radius: 4px;">
+              <i class="fas fa-plus-circle" />
             </span>
-            <button class="button is-danger">
+            <button class="button is-rounded has-text-white" style="background-color: orangered; margin: 0 3rem;">
               SUBMIT
             </button>
           </label>
@@ -90,3 +87,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.file-outer {
+    padding: .25rem;
+    border: 1px solid hsl(174, 70%, 54%);
+}
+</style>

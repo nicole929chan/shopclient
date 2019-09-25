@@ -7,6 +7,13 @@ $table-background-color: transparent;
 
 $message-body-border: 0;
 
+$has-text-darkdanger: hsl(0, 61%, 50%);
+
+$file-border-color: #fff;
+$file-cta-background-color: #fff;
+$file-cta-hover-color: #fff;
+$file-name-border-color: $orange;
+
 @import "components/navigation";
 
 @import "~bulma/bulma";
