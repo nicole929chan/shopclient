@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     url () {
-      return `/members/${this.member}`
+      return process.env.APP_DOMAIN + `/members/${this.member}`
     }
   }
 }
