@@ -29,17 +29,22 @@
                   {{ point }}
                   <br>
                 </p>
-              </div>
-              <div class="columns is-mobile">
-                <div class="column is-half">
-                  <button class="button is-danger is-small is-fullwidth" @click.prevent="showCard = true">
-                    Get!
-                  </button>
+                <div class="columns is-mobile">
+                  <div class="column is-half">
+                    <button class="button is-danger is-small is-fullwidth" @click.prevent="showCard = true">
+                      Get!
+                    </button>
+                  </div>
+                  <div class="column">
+                    <button class="button is-danger is-small is-fullwidth" :disabled="plan.points==0" @click.prevent="showRedeem = true">
+                      Redeem!
+                    </button>
+                  </div>
                 </div>
-                <div class="column">
-                  <button class="button is-danger is-small is-fullwidth" :disabled="plan.points==0" @click.prevent="showRedeem = true">
-                    Redeem!
-                  </button>
+                <div class="columns is-mobile">
+                  <div class="column">
+                    <Facebook :member="plan.member.id" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -57,11 +62,13 @@ import pluralize from 'pluralize'
 import moment from 'moment'
 import Card from '@/components/plan/Card'
 import Redeem from '@/components/plan/Redeem'
+import Facebook from '@/components/sharing/Facebook'
 
 export default {
   components: {
     Card,
-    Redeem
+    Redeem,
+    Facebook
   },
   props: {
     plan: {

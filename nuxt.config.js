@@ -34,7 +34,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~plugins/bus'
+    '~plugins/bus',
+    '~plugins/vue-social-sharing'
   ],
   /*
   ** Nuxt.js dev-modules
