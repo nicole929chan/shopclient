@@ -1,5 +1,6 @@
 <template>
-  <div v-if="alert" class="notification is-info" @click.prevent="clear">
+  <div v-if="alert" class="notification is-primary" @click.prevent="clear">
+    <button class="delete" />
     {{ alert }}
   </div>
 </template>
