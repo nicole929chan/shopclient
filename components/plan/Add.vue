@@ -10,10 +10,8 @@
                 UPLOAD TO GET GIFT!
               </span>
             </span>
-            <span class="file-name is-size-4 has-text-danger has-text-centered" style="margin: 1rem 0; padding: 3rem 0 6rem 0; border-top: 1px solid #ff470f; border-top-left-radius: 4px; border-top-right-radius: 4px;">
-              <i class="fas fa-plus-circle" />
-            </span>
-            <button class="button is-rounded has-text-white" style="background-color: orangered; margin: 0 3rem;">
+            <span class="file-name is-size-5 has-text-danger has-text-centered" style="margin: 1rem 0; padding: 3rem 0 6rem 0; border-top: 1px solid #ff470f; border-top-left-radius: 4px; border-top-right-radius: 4px;" v-html="filename" />
+            <button class="button is-rounded has-text-white" style="background-color: orangered; margin: 0 3rem;" :disabled="disabled">
               SUBMIT
             </button>
           </label>
@@ -46,7 +44,9 @@ export default {
       },
       src: null,
       msg: null,
-      errors: {}
+      errors: {},
+      filename: '<i class="fas fa-plus-circle"></i>',
+      disabled: false
     }
   },
   methods: {
@@ -57,6 +57,8 @@ export default {
       if (!e.target.files.length) {
         return
       }
+
+      this.filename = e.target.files[0].name
 
       const image = e.target.files[0]
       const reader = new FileReader()
@@ -72,6 +74,7 @@ export default {
       const data = new FormData()
       data.append('image', this.form.image)
       data.append('member_id', this.form.memberId)
+      this.disabled = true
 
       try {
         const response = await this.$axios.$post('plan', data)
@@ -82,6 +85,7 @@ export default {
       } catch (e) {
         this.errors = e.response.data.errors
         this.msg = ''
+        this.disabled = false
       }
     }
   }
