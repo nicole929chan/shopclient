@@ -29,23 +29,21 @@
                   {{ point }}
                   <br>
                 </p>
-                <div class="columns is-mobile">
-                  <div class="column is-half">
-                    <button class="button is-danger is-small is-fullwidth" @click.prevent="showCard = true">
-                      Get!
-                    </button>
-                  </div>
-                  <div class="column">
-                    <button class="button is-danger is-small is-fullwidth" :disabled="plan.points==0" @click.prevent="showRedeem = true">
-                      Redeem!
-                    </button>
-                  </div>
+              </div>
+              <nav class="level is-mobile">
+                <div class="level-item">
+                  <button class="button is-danger is-small is-fullwidth" @click.prevent="showCard = true">
+                    Get!
+                  </button>
                 </div>
-                <div class="columns is-mobile">
-                  <div class="column">
-                    <Facebook :member="plan.member.id" />
-                  </div>
+                <div class="level-item">
+                  <button class="button is-danger is-small is-fullwidth" :disabled="plan.points==0" @click.prevent="showRedeem = true">
+                    Redeem!
+                  </button>
                 </div>
+              </nav>
+              <div class="field">
+                <Facebook :member="plan.member.id" />
               </div>
             </div>
           </article>
