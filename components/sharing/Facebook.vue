@@ -21,10 +21,9 @@ export default {
   },
   computed: {
     url () {
-      const memberId = this.member.id
       const userId = this.$auth.user.id
 
-      return process.env.APP_DOMAIN + `/cards?member=${memberId}&user=${userId}`
+      return process.env.APP_DOMAIN + `/cards?member=${this.member}&user=${userId}`
     }
   }
 }
