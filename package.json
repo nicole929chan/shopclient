@@ -18,7 +18,7 @@
     "bulma": "^0.7.5",
     "dotenv": "^8.1.0",
     "font-awesome": "^4.7.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "nuxt": "^2.0.0",
     "pluralize": "^8.0.0",
     "vue-social-sharing": "^2.4.6"
